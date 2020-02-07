@@ -2,7 +2,11 @@
 	.cpu cortex-a53
 	.equ 	NUL, 0
 
+<<<<<<< HEAD
 	.global quidFP2float
+=======
+	.global quidfp2float
+>>>>>>> db86b1af66831df0bfec850a5cebb9e7cfe92414
  	// !!! SET FP_OFFSET TO THE NUMBER OF (SAVED REGISTERS -1 * 4)
 	.equ 	FP_OFFSET, 16 		// (# of saved regs - 1) * 4
 
@@ -35,7 +39,11 @@ quidFP2float:
 
 zeroQuidFP2float:
   // PROLOG (DO NOT TOUCH!!!)
+<<<<<<< HEAD
         push    {fp, lr}   		// save regs
+=======
+  push    {fp, lr}   		// save regs
+>>>>>>> db86b1af66831df0bfec850a5cebb9e7cfe92414
 	add	fp, sp, #FP_OFFSET
 
   // ==========================================================================

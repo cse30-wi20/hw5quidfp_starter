@@ -7,7 +7,11 @@
 # we provide a phony target clean to rm all the .o files
 #
 
+<<<<<<< HEAD
 EXE = quidfp
+=======
+EXE = quidditchfp
+>>>>>>> db86b1af66831df0bfec850a5cebb9e7cfe92414
 OBJS = main.o quidfp2float.o
 LIBS = 
 CC = gcc 
