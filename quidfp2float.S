@@ -1,63 +1,50 @@
-	.arch armv6
-	.cpu cortex-a53
-	.equ 	NUL, 0
+	.arch	armv6
+	.cpu	cortex-a53
+	.equ	NUL, 0
+	.equ	FP_OFFSET, 36 		// (# of regs saved - 1) * 4
 
-<<<<<<< HEAD
-	.global quidFP2float
-=======
-	.global quidfp2float
->>>>>>> db86b1af66831df0bfec850a5cebb9e7cfe92414
- 	// !!! SET FP_OFFSET TO THE NUMBER OF (SAVED REGISTERS -1 * 4)
-	.equ 	FP_OFFSET, 16 		// (# of saved regs - 1) * 4
+
+
+
+	.global	quidFP2float	
 
 quidFP2float:
-	// PROLOG (DO NOT TOUCH!!!)
+	// quidFP2float's prolog (do not edit)
+	push    {r4-r11, fp, lr}   	// using SP to save preserved regs that might be modified
+	add  	fp, sp, #FP_OFFSET	// using SP to update FP to the new stackframe
 
-	push    {r4-r6, fp, lr}   	// SAVED REGISTERS (any of r4-r10, r12, fp, lr)
-                              // SAVE AT LEAST FP AND LR
-	add  	fp, sp, #FP_OFFSET  	// .
-
-  // ==========================================================================
-  // YOUR CODE GOES IN THE SECTION BELOW
-  // ==========================================================================
-  // R0 holds the result
+  //=================== YOUR CODE GOES IN THE SECTION BELOW ===================//
 
 
 
 
 
-  // ==========================================================================
+  //===========================================================================//
 
-	// EPILOG (DO NOT TOUCH!!!)
-	sub	sp, fp, #FP_OFFSET
-	pop     {r4-r6, fp, lr}   	// MUST MATCH LIST IN PROLOG'S PUSH
-	bx 	lr                      // return
+	// quidFP2float's epilog (do not edit)
+	sub	sp, fp, #FP_OFFSET	// using FP to restore SP to the old stackframe
+	pop     {r4-r11, fp, lr}   	// using SP to restore regs saved in prolog
+	bx 	lr                      // using LR to update PC and thereby return
+
+
 
 
 	.global zeroQuidFP2float
-	.equ 	FP_OFFSET, 4  		//  (# of saved regs -1) * 4
 
 zeroQuidFP2float:
-  // PROLOG (DO NOT TOUCH!!!)
-<<<<<<< HEAD
-        push    {fp, lr}   		// save regs
-=======
-  push    {fp, lr}   		// save regs
->>>>>>> db86b1af66831df0bfec850a5cebb9e7cfe92414
-	add	fp, sp, #FP_OFFSET
+	// zeroQuidFP2float's prolog (do not edit)
+	push    {r4-r11, fp, lr}   	// using SP to save preserved regs that might be modified
+	add	fp, sp, #FP_OFFSET	// using SP to update FP to the new stackframe
 
-  // ==========================================================================
-  // YOUR CODE GOES IN THE SECTION BELOW
-  // ==========================================================================
-	// R0 holds the Result
+  //=================== YOUR CODE GOES IN THE SECTION BELOW ===================//
 
 
 
 
 
-  // ==========================================================================
+  //===========================================================================//
 
-	// EPILOG (DO NOT TOUCH!!!)
-	sub	sp, fp, #FP_OFFSET
-	pop     {fp, lr}   		// restore regs
-	bx 	lr                      // return
+	// zeroQuidFP2float's epilog (do not edit)
+	sub	sp, fp, #FP_OFFSET	// using FP to restore SP to the old stackframe
+	pop     {r4-r11, fp, lr}   	// using SP to restore regs saved in prolog
+	bx 	lr                      // using LR to update PC and thereby return
