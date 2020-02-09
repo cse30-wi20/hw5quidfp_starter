@@ -1,19 +1,22 @@
-EXE = quidfp
-OBJS = main.o quidfp2float.o
-
 CFLAGS = -g -O0 --std=gnu99
 
 .PHONY: clean
 
-$(EXE) : $(OBJS)
-	gcc -o $@ $(CFLAGS) $(OBJS) $(LIBS)
+default : quidfp makebin
+
+makebin : makebin.c
+	gcc -o makebin $(CFLAGS) makebin.c
+
+quidfp : main.o quidFP2float.o
+	gcc -o quidfp $(CFLAGS) main.o quidFP2float.S
 
 main.o : main.c
 
-quidfp2float.o : quidfp2float.S
-	gcc -c $(CFLAGS) -gstabs+ quidfp2float.S
+quidFP2float.o : quidFP2float.S
+	gcc -c $(CFLAGS) -gstabs+ quidFP2float.S
 
 clean :
-	rm -f $(OBJS)
-	rm $(EXE)
+	rm -f *.o
+	rm -f quidfp
+	rm -f makebin
 
