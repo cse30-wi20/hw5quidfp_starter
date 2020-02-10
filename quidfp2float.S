@@ -1,7 +1,7 @@
 	.arch	armv6
 	.cpu	cortex-a53
 	.equ	NUL, 0
-	.equ	FP_OFFSET, 40 		// (# of regs saved - 1) * 4
+	.equ	FP_OFFSET, 32 		// (# of regs saved - 1) * 4
 
 
 
