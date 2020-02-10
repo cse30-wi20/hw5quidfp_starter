@@ -7,13 +7,13 @@ default : quidfp makebin
 makebin : makebin.c
 	gcc -o makebin $(CFLAGS) makebin.c
 
-quidfp : main.o quidFP2float.o
-	gcc -o quidfp $(CFLAGS) main.o quidFP2float.S
+quidfp : main.o quidfp2float.o
+	gcc -o quidfp $(CFLAGS) main.c quidfp2float.S
 
 main.o : main.c
 
-quidFP2float.o : quidFP2float.S
-	gcc -c $(CFLAGS) -gstabs+ quidFP2float.S
+quidfp2float.o : quidfp2float.S
+	gcc -c $(CFLAGS) -gstabs+ quidfp2float.S
 
 clean :
 	rm -f *.o
